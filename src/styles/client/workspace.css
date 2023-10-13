@@ -34,7 +34,7 @@ font-family: 'Inter', sans-serif;
 .btn-create-blog {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   font-size: 12pt;
 }
 

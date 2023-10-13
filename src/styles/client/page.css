@@ -5,6 +5,22 @@
 }
 .page-title {
 }
+.headpage-desc {
+  color: #4254abd1;
+}
 .page-desc {
   color: #e2e1e195;
+}
+.area-create-blog {
+  padding: 0 1rem;
+}
+.area-create-blog > .btn-create-blog {
+  display: block;
+  margin: .5rem 0;
+}
+.topics{
+  padding: 1rem;
+}
+.topics-text{
+
 }

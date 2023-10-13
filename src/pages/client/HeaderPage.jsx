@@ -10,7 +10,7 @@ const Page = ({ data }) => {
           {data.title}
         </Link>
       </h2>
-      <span class="page-desc"> {data.description} </span>
+      <span class="headpage-desc"> {data.description} </span>
     </div>
   );
 };
