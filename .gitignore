@@ -8,9 +8,13 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+server/*
+!server/index.js
 dist
 dist-ssr
 *.local
+pages/security
+# pages/security/passwordAdmin.js
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +26,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+

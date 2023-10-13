@@ -1,0 +1,26 @@
+@media screen and (max-width: 800px) {
+    .tableUser{
+        font-size: 11pt;
+    }
+}
+.tableUser{
+    display: grid;
+    gap: 1.5rem;
+}
+.tableUser table{
+    background-color: #efefef;
+}
+.tableUser table thead{
+    background-color: #0a1030;
+    color: #efefef;
+    padding: 2px 3px;
+}
+.tableUser table thead *{
+    padding: 2px 3px;
+}
+.tableUser table th{
+    text-align: center;
+}
+.tableUser table td{
+    padding: 1px 3px;
+}

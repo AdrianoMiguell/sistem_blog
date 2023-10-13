@@ -1,0 +1,36 @@
+main {
+  color: #424255;
+}
+.admin-title {
+  text-align: center;
+}
+.admin-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.admin-input {
+  margin: 1rem 0;
+  padding: 5px 10px;
+  font-size: 12pt;
+  min-width: 400px;
+}
+.admin-button {
+  visibility: hidden;
+}
+.admin-form:hover ~ .admin-button,
+.admin-input:focus ~ .admin-button,
+.admin-button:hover {
+  visibility: visible;
+  background-color: #f4f5f7;
+  border: none;
+}
+
+.sectionBlobkOption {
+  margin: 3rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

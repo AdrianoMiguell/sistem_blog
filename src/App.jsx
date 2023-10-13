@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import getSessionStorage from "./functions/getSessionStorage";
+import { Link, Outlet } from "react-router-dom";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+import Header from "./Components/Header";
+
+const App = () => {
+  const dataUser = getSessionStorage();
+  const name = dataUser.name;
+  const [visible, setVisible] = useState(false);
+  // const [dnone, setDnone] = useState(true);
+
+  // const removeLoader = () => {
+  //   console.log("Tudo pronto!");
+  //   // setTimeOut(() => {
+  //   //   setDnone(!dnone);
+  //   //   const loader = document.querySelector(".loader");
+  //   //   document.body.remove(loader);
+  //   // }, 5000);
+  // };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+    
+    {/* //     setVisible(!visible);
+    //   }}
+    // >
+    //   <div className="loader"> */}
+     {/* <div className="loader" style={{ display: dnone ? "" : "none" }}>
+    //   <div className="loader" style={{ opacity: visible ? "0" : "1" }}>
+    //     <div className="spinner"></div>
+    //   </div> */}
 
-export default App
+      <header>
+        <Header name={name} />
+      </header>
+
+      <main>
+        <Outlet />
+      </main>
+    </div>
+  );
+};
+// };
+
+export default App;

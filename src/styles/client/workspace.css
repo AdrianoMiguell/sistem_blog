@@ -1,0 +1,45 @@
+/* font-family: 'Courgette', cursive;
+font-family: 'Inter', sans-serif;
+ */
+
+.spaceEmpty {
+  text-align: center;
+  margin: 5rem 0;
+}
+
+.workspace-baner {
+  background-color: #0a1030;
+  padding: 2rem;
+  margin: 2rem 1rem;
+}
+.workspace-baner h1 {
+  color: #eee;
+  /* color: #4254a2; */
+  text-shadow: 0 0 2px #4254a2;
+  /* text-shadow: 0 0 2px rgba(255, 255, 255, 0.30); */
+  font-family: "Courgette", cursive !important;
+}
+
+.btnW {
+  display: block;
+  margin: 2rem auto;
+  border: 2px solid rgb(64, 230, 161);
+  background-color: rgb(70, 255, 178);
+  opacity: 0.8;
+  transition-duration: 0.25s;
+}
+.btnW:hover {
+  opacity: 1;
+}
+.btn-create-blog {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12pt;
+}
+
+.form-create {
+  display: grid;
+  gap: 10px;
+  padding: 0 25px;
+}
