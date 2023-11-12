@@ -1,13 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logout from "../functions/logout";
+import "../App.css";
 
 const HeadingPerfil = ({ name }) => {
   const navigate = useNavigate();
 
   if (name == undefined) {
     return (
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul className="navbar-nav">
+        {/* <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Categorias
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="#">
+                Action
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                Another action
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                Something else here
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Services
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contato">
+            Contato
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#sobre">
+            Sobre
+          </a>
+        </li> */}
         <li className="nav-item">
           <Link to={"/login"} className="nav-link active">
             Login
@@ -22,7 +69,7 @@ const HeadingPerfil = ({ name }) => {
     );
   } else {
     return (
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul className="navbar-nav">
         <li className="nav-item">
           <Link to={"/perfil"} className="nav-link active">
             {name}

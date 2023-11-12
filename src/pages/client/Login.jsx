@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
+import Alerts from "./Alerts";
 import "../../styles/client/register_login.css";
 import checkSessionStorage from "../security/checkSessionStorage";
 
 const Login = () => {
   const [values, setValues] = useState();
   const [show, setShow] = useState(false);
-  const [msg, setMsg] = useState("");
+  const [msg, setMsg] = useState({message: "", type: "alert-warning"});
   const navigate = useNavigate();
 
   let haveSession = checkSessionStorage();
@@ -32,18 +33,25 @@ const Login = () => {
 
   const login = () => {
     Axios.get(
-      `http://localhost:3001/checkuser/${values.email}/${values.password}`
+      `http://localhost:3001/checkuserpassword/${values.email}/${values.password}`
     )
       .then((response) => {
         if (response.data.length == 0) {
-          console.log("Este usuario não existe!");
-          setMsg("Este usuario não existe!");
+          setMsg({
+            message: "Este usuário não existe!",
+            type: "alert-danger"
+          });
         } else if (response.data.length > 1) {
           console.error("Error no banco, desculpe! Volte mais tarde!");
         } else {
           console.log("Login realizado! ");
-          setMsg("Login realizado!");
+          setMsg({
+            message: "Login Realizado",
+            type: "alert-success"
+          });
+          console.log(msg);
           const dataUser = response.data[0];
+          console.log(dataUser)
           defineSessionStorage(dataUser.name, dataUser.email, dataUser.id);
           if (
             dataUser.email == "admin@gmail.com" &&
@@ -56,8 +64,10 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        setMsg("Algo deu errado no servidor.. Tente novamente!");
-        console.error(err);
+        setMsg({
+          message: "Algo deu errado no servidor ... Volte mais tarde! 😔",
+          type: "alert-danger"
+        });
       });
   };
 
@@ -71,10 +81,9 @@ const Login = () => {
     <div>
       <form action="" className="register_login">
         <legend>
-          {" "}
-          <h2>Login</h2>{" "}
+          <h2>Login</h2>
         </legend>
-        <div className="alert alert-warning p-0">{msg}</div>
+        < Alerts msg={msg.message} type={msg.type}  />
         <input
           type="email"
           name="email"

@@ -9,18 +9,34 @@
   color: #4254abd1;
 }
 .page-desc {
-  color: #e2e1e195;
+  color: #202020c4;
+  font-weight: 750;
 }
 .area-create-blog {
   padding: 0 1rem;
 }
 .area-create-blog > .btn-create-blog {
-  display: block;
   margin: .5rem 0;
 }
 .topics{
-  padding: 1rem;
+  padding: 2rem;
+  margin: 1rem 0;
+}
+.topics *{
+  position: relative;
 }
 .topics-text{
 
+}
+.edit-option{
+  
+}
+.divBtnEditPage{
+  
+}
+.btnEditPage{
+  
+}
+.btnEditPage *{
+  margin: auto;
 }

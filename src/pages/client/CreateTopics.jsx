@@ -9,7 +9,7 @@ const CreateTopics = ({ id }) => {
 
   const createNewTopics = () => {
     event.preventDefault();
-    console.log(content, subtitle)
+    console.log(content, subtitle);
 
     if (subtitle != null || content != null) {
       console.log(id, subtitle, content);
@@ -35,62 +35,45 @@ const CreateTopics = ({ id }) => {
   return (
     <>
       <button
+        className="btnW btn-create-blog ms-0"
         type="button"
-        className="btnW btn-create-blog"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
       >
         <i class="bi bi-plus-circle-fill"></i>
         tópico
       </button>
-
-      <div
-        className="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Criar tópico
-              </h1>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <form className="form-create">
-                <div>
-                  <label htmlFor="" className="form-label">
-                    Subtitulo
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    onChange={(value) => {
-                      useSubtitle(value.target.value);
-                    }}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="" className="form-label">
-                    Conteúdo
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    onChange={(value) => {
-                      useContent(value.target.value);
-                    }}
-                  />
-                </div>
-                {/* <div>
+      <div class="collapse" id="collapseExample">
+        <form className="form-create card card-body pt-3">
+          <div>
+            <label htmlFor="" className="form-label">
+              Subtitulo
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              onChange={(value) => {
+                useSubtitle(value.target.value);
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="" className="form-label">
+              Conteúdo
+            </label>
+            <textarea
+              min="500"
+              rows="8"
+              className="form-control"
+              onChange={(value) => {
+                useContent(value.target.value);
+              }}
+            ></textarea>
+          </div>
+          
+          {/* <div>
                   <label htmlFor="" className="form-label">
                     Imagem
                   </label>
@@ -102,20 +85,17 @@ const CreateTopics = ({ id }) => {
                     }}
                   />
                 </div> */}
-                <div>
-                  <button
-                    className="btnW"
-                    type="submit"
-                    style={{ marginRight: "0" }}
-                    onClick={createNewTopics}
-                  >
-                    Criar
-                  </button>
-                </div>
-              </form>
-            </div>
+          <div>
+            <button
+              className="btnW"
+              type="submit"
+              style={{ marginRight: "0" }}
+              onClick={createNewTopics}
+            >
+              Criar
+            </button>
           </div>
-        </div>
+        </form>
       </div>
 
       <Alerts msg={msg} />

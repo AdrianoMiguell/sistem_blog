@@ -3,11 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import checkSessionStorage from "../security/checkSessionStorage";
 import "../../styles/client/register_login.css";
+import Alerts from "./Alerts";
 
 const Register = () => {
   const [values, setValues] = useState();
   const [show, setShow] = useState(false);
-  const [msg, setMsg] = useState("");
+  const [msg, setMsg] = useState({ message: "", type: "alert-warning" });
 
   const navigate = useNavigate();
 
@@ -29,19 +30,20 @@ const Register = () => {
   const handleClickButton = () => {
     event.preventDefault();
 
-    Axios.get(
-      `http://localhost:3001/checkuser/${values.email}/${values.password}`
-    )
+    Axios.get(`http://localhost:3001/checkuser/${values.email}`)
       .then((response) => {
-        if (response.data.length == 0) {
-          setMsg("Você foi registrado!");
+        if (response.data.length == 0 && response) {
+          setMsg({ message: "Você foi registrado!", type: "alert-success" });
           register();
         } else {
-          setMsg("Email já está em uso!");
+          setMsg({ message: "Email já está em uso!", type: "alert-danger" });
         }
       })
       .catch((err) => {
-        setMsg("Algo deu errado no servidor.. Tente novamente!");
+        setMsg({
+          message: "Algo deu errado no servidor.. Tente novamente!",
+          type: "alert-danger",
+        });
         console.error(err);
       });
   };
@@ -52,7 +54,7 @@ const Register = () => {
       email: values.email,
       password: values.password,
     })
-      .then(() => {
+      .then((res) => {
         if (
           values.email == "admin@gmail.com" &&
           values.password == "admin987"
@@ -63,7 +65,10 @@ const Register = () => {
         }
       })
       .catch((err) => {
-        setMsg("Ocorreu um erro! Tente novamente!");
+        setMsg({
+          message: "Ocorreu um erro! Tente novamente!",
+          type: "alert-danger",
+        });
         console.error(err);
       });
   };
@@ -75,7 +80,7 @@ const Register = () => {
           {" "}
           <h2>Register</h2>{" "}
         </legend>
-        <div className="alert alert-danger">{msg}</div>
+        <Alerts msg={msg.message} type={msg.type} />
         <input
           type="text"
           name="name"
