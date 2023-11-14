@@ -10,18 +10,19 @@ font-family: 'Inter', sans-serif;
 .workspace-baner {
   background-color: #0a1030;
   padding: 2rem;
-  margin: 2rem 1rem;
+  min-height: 35vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 .workspace-baner h1 {
   color: #eee;
-  /* color: #4254a2; */
   text-shadow: 0 0 2px #4254a2;
-  /* text-shadow: 0 0 2px rgba(255, 255, 255, 0.30); */
   font-family: "Courgette", cursive !important;
 }
 
 .btnW {
-  margin: 2rem auto;
   border: 2px solid rgb(64, 230, 161);
   background-color: rgb(70, 255, 178);
   opacity: 0.8;
@@ -41,4 +42,8 @@ font-family: 'Inter', sans-serif;
   display: grid;
   gap: 10px;
   padding: 0 25px;
+}
+
+.div-linkPage{
+  margin: 5rem 1rem;
 }

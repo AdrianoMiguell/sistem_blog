@@ -1,0 +1,20 @@
+.alert{
+    position: fixed;
+    right: 10px;
+    bottom: 0px;
+}
+
+.alert-none {
+  animation: hidden-message 1s ease-in-out;
+  visibility: hidden;
+}
+
+@keyframes hidden-message {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

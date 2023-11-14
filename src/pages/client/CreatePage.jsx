@@ -39,14 +39,14 @@ const CreateBlog = ({ id }) => {
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <i class="bi bi-plus-circle-fill"></i>
+        <i className="bi bi-plus-circle-fill"></i>
         página
       </button>
 
       <div
         className="modal fade"
         id="exampleModal"
-        tabindex="-1"
+        // tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >

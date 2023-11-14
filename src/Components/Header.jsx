@@ -14,7 +14,7 @@ function Header({ name }) {
       <Link to={"/"} className="link navbar-brand">
         Blog
       </Link>
-      <div className="navbar-collapse-flex d-flex flex-row-reverse gap-3 align-items-center">
+      <div className="navbar-collapse-flex d-flex flex-row-reverse gap-5 align-items-center">
         <button
           className="navbar-toggler"
           type="button"

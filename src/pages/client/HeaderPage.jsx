@@ -4,14 +4,12 @@ import "../../styles/client/page.css";
 
 const Page = ({ data }) => {
   return (
-    <div class="page">
-      <h2 class="page-title">
-        <Link to={"/page"} state={{ data: data }}>
-          {data.title}
-        </Link>
-      </h2>
-      <span class="headpage-desc"> {data.description} </span>
-    </div>
+    <Link to={"/page"} state={{ data: data }}>
+      <div className="page">
+        <h2 className="page-title">{data.title}</h2>
+        <span className="headpage-desc"> {data.description} </span>
+      </div>
+    </Link>
   );
 };
 

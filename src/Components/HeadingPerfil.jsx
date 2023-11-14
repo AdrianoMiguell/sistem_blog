@@ -9,52 +9,6 @@ const HeadingPerfil = ({ name }) => {
   if (name == undefined) {
     return (
       <ul className="navbar-nav">
-        {/* <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Categorias
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="#">
-                Action
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">
-                Another action
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">
-                Something else here
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            Services
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contato">
-            Contato
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#sobre">
-            Sobre
-          </a>
-        </li> */}
         <li className="nav-item">
           <Link to={"/login"} className="nav-link active">
             Login
@@ -76,6 +30,16 @@ const HeadingPerfil = ({ name }) => {
           </Link>
         </li>
         <li className="nav-item">
+          <Link to={"/contato"} className="nav-link active">
+            contato
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to={"/perfil"} className="nav-link active">
+            sobre nós
+          </Link>
+        </li>
+        <li className="nav-item">
           <span
             style={{ cursor: "pointer" }}
             className="nav-link active"
@@ -87,17 +51,6 @@ const HeadingPerfil = ({ name }) => {
             Sair
           </span>
         </li>
-        <form className="d-flex" role="search">
-          <input
-            className="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button className="btn btn-outline-success" type="submit">
-            Search
-          </button>
-        </form>
       </ul>
     );
   }

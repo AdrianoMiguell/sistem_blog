@@ -24,7 +24,6 @@ const Workspace = () => {
     Axios.get("http://localhost:3001/selectpages/" + id).then((res) => {
       setData(res.data);
       if (res.data.length != 0 && !have_page) {
-        console.log("have");
         sessionStorage.setItem("have_page", true);
       } else if (res.data.length == 0) {
         sessionStorage.setItem("have_page", false);
@@ -32,7 +31,6 @@ const Workspace = () => {
     });
   }, []);
 
-  console.log(data);
 
   if (!have_page) {
     return (
@@ -50,14 +48,20 @@ const Workspace = () => {
   } else {
     return (
       <div>
-        <div className="workspace-baner">
+        <div className="workspace-baner" style={{ margin: "-2rem" }}>
           <h1 className="text-center"> Minhas páginas </h1>
         </div>
 
-        {data.map((d) => (
-          <HeaderPage key={d.id} data={d} />
-        ))}
-        <CreateBlog id={id} />
+        <div className="div-linkPage">
+          <div className="d-flex justify-content-end me-4 my-2">
+            <CreateBlog id={id} />
+          </div>
+          <div className="d-flex flex-column align-items-center">
+            {data.map((d) => (
+              <HeaderPage key={d.id} data={d} />
+            ))}
+          </div>
+        </div>
       </div>
     );
   }

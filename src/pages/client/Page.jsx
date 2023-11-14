@@ -1,10 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
-import ContentEditable from "react-contenteditable";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Alerts from "./Alerts";
 import checkSessionStorage from "../security/checkSessionStorage";
 import CreateTopics from "./CreateTopics";
-import EditPage from "./EditPage";
 import Axios from "axios";
 import "../../styles/client/page.css";
 import "../../styles/client/workspace.css";
@@ -12,9 +10,6 @@ import SubtitlePage from "./SubtitlePage";
 import ContentPage from "./ContentPage";
 
 const Page = () => {
-  const elemSubtitle = useRef();
-  const elemContent = useRef();
-
   const { data } = useLocation().state;
   const [msg, setMsg] = useState();
   const [topics, setTopics] = useState([]);
@@ -42,18 +37,23 @@ const Page = () => {
 
   if (topics.length == 0) {
     return (
-      <div>
+      <div className="div-topics">
         <div className="text-center">
           <h1 className="page-title"> {data.title} </h1>
-          <span className="page-desc"> {data.description} </span>
+          <span className="page-desc d-block"> {data.description} </span>
+          <div className="d-inline-block mx-auto mt-2">
+            <span className="mt-5 mb-3 d-block">
+              Nenhum tópico criado ainda... <br /> Clique no botão abaixo para
+              criar os primeiros contéudos da página.{" "}
+            </span>
+            <CreateTopics id={data.id} />
+          </div>
         </div>
-        <span className="mt-5 d-block">Nenhum tópico criado ainda...</span>
-        <CreateTopics id={data.id} />
       </div>
     );
   } else {
     return (
-      <div>
+      <div className="div-topics">
         <div className="text-center">
           <h1 className="page-title"> {data.title} </h1>
           <span className="page-desc"> {data.description} </span>
@@ -61,31 +61,22 @@ const Page = () => {
         <div className="topics">
           {topics.map((m, index) => (
             <div className="topic">
-              <SubtitlePage dataSubtit={m.subtitle} key={index} />
-              <ContentPage dataContent={m.content} key={index} />
-
-              {/* <h3
-                ref={elemSubtitle}
-                className="sec-title"
-                contentEditable
-                onInput={() => {
-                  console.log("Clicou");
-                  setSubtitle(elemSubtitle.current.textContent);
-                  console.log(subtitle);
-                }}
-              >
-                {m.subtitle}
-              </h3> */}
-              {/* <p className="topics-text" contentEditable>
-                {m.content}
-                <EditPage />
-              </p> */}
+              <SubtitlePage
+                dataId={m.id}
+                dataSubtit={m.subtitle}
+                key={"sub" + index}
+              />
+              <ContentPage
+                dataId={m.id}
+                dataContent={m.content}
+                key={"cont" + index}
+              />
             </div>
           ))}
         </div>
-        <CreateTopics id={data.id} />
 
-        <Alerts msg={msg} />
+        <CreateTopics id={data.id} />
+        {/* <Alerts msg={msg} /> */}
       </div>
     );
   }

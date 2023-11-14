@@ -8,14 +8,14 @@ import checkSessionStorage from "../security/checkSessionStorage";
 const Login = () => {
   const [values, setValues] = useState();
   const [show, setShow] = useState(false);
-  const [msg, setMsg] = useState({message: "", type: "alert-warning"});
+  const [msg, setMsg] = useState({ message: "", type: "alert-warning" });
   const navigate = useNavigate();
 
   let haveSession = checkSessionStorage();
 
   if (haveSession === true) {
     return useEffect(() => {
-      navigate("/");
+      navigate("/workspace");
     }, []);
   }
 
@@ -39,7 +39,7 @@ const Login = () => {
         if (response.data.length == 0) {
           setMsg({
             message: "Este usuário não existe!",
-            type: "alert-danger"
+            type: "alert-danger",
           });
         } else if (response.data.length > 1) {
           console.error("Error no banco, desculpe! Volte mais tarde!");
@@ -47,11 +47,11 @@ const Login = () => {
           console.log("Login realizado! ");
           setMsg({
             message: "Login Realizado",
-            type: "alert-success"
+            type: "alert-success",
           });
           console.log(msg);
           const dataUser = response.data[0];
-          console.log(dataUser)
+          console.log(dataUser);
           defineSessionStorage(dataUser.name, dataUser.email, dataUser.id);
           if (
             dataUser.email == "admin@gmail.com" &&
@@ -59,14 +59,15 @@ const Login = () => {
           ) {
             return navigate(`/controlcenter`);
           } else {
-            location.reload();
+            // location.reload();
+            return navigate(`/workspace`);
           }
         }
       })
       .catch((err) => {
         setMsg({
           message: "Algo deu errado no servidor ... Volte mais tarde! 😔",
-          type: "alert-danger"
+          type: "alert-danger",
         });
       });
   };
@@ -83,7 +84,7 @@ const Login = () => {
         <legend>
           <h2>Login</h2>
         </legend>
-        < Alerts msg={msg.message} type={msg.type}  />
+        <Alerts msg={msg.message} type={msg.type} />
         <input
           type="email"
           name="email"

@@ -1,9 +1,24 @@
+.div-topics {
+  margin: auto;
+  padding: 2rem;
+  max-width: calc(88vw - 20px);
+}
 .page {
-  background-color: #4254a209;
-  margin: 1rem;
+  background-color: #4254a20f;
+  margin: 1.5rem;
+  width: 70vw;
   padding: 0.5rem;
 }
+.div-create-topic .form-create {
+  background-color: #4254a209;
+  box-shadow: 1px 2px 4px #090b1512;
+  transition: 0.25s linear;
+}
+.div-create-topic .form-create:hover {
+  box-shadow: 1.5px 3px 4px #090b1544;
+}
 .page-title {
+  font-weight: 550;
 }
 .headpage-desc {
   color: #4254abd1;
@@ -16,27 +31,38 @@
   padding: 0 1rem;
 }
 .area-create-blog > .btn-create-blog {
-  margin: .5rem 0;
+  margin: 0.5rem 0;
 }
-.topics{
-  padding: 2rem;
+.topics {
+  padding: 1rem 0;
   margin: 1rem 0;
 }
-.topics *{
-  position: relative;
+.topic {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 12pt;
+  font-family: "Inter", Arial, sans-serif;
 }
-.topics-text{
-
-}
-.edit-option{
-  
-}
-.divBtnEditPage{
-  
-}
-.btnEditPage{
-  
-}
-.btnEditPage *{
+.btnEditPage * {
   margin: auto;
+}
+.subtitlePageTop {
+  font-size: large;
+  font-weight: 650;
+}
+.subtitlePageTop:first-letter {
+  text-transform: capitalize;
+}
+.contentPageTop {
+  text-indent: 25pt;
+}
+.contentPageTop::first-letter {
+  text-transform: capitalize;
+}
+.contentEditable{
+  outline: none;
+}
+.divBtnEditPage {
+}
+.btnEditPage {
 }

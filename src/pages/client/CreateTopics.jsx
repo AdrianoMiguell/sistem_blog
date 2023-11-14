@@ -42,11 +42,11 @@ const CreateTopics = ({ id }) => {
         aria-expanded="false"
         aria-controls="collapseExample"
       >
-        <i class="bi bi-plus-circle-fill"></i>
+        <i className="bi bi-plus-circle-fill"></i>
         tópico
       </button>
-      <div class="collapse" id="collapseExample">
-        <form className="form-create card card-body pt-3">
+      <div className="div-create-topic collapse mt-2" id="collapseExample">
+        <form className="form-create card card-body pt-3 border-0">
           <div>
             <label htmlFor="" className="form-label">
               Subtitulo
@@ -72,22 +72,9 @@ const CreateTopics = ({ id }) => {
               }}
             ></textarea>
           </div>
-          
-          {/* <div>
-                  <label htmlFor="" className="form-label">
-                    Imagem
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    onChange={(value) => {
-                      useImg(value.target.value);
-                    }}
-                  />
-                </div> */}
           <div>
             <button
-              className="btnW"
+              className="btnW my-2"
               type="submit"
               style={{ marginRight: "0" }}
               onClick={createNewTopics}
