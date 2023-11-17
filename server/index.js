@@ -1,5 +1,3 @@
-// Este documento é uma copia do server original, coloque-o em para rodar em uma pasta diferente da deste projeto
-
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
@@ -28,6 +26,7 @@ app.post("/register", (req, res) => {
   db.query(SQL, [name, email, password], (err, result) => {
     if (err) {
       console.error(err);
+      res.send(err);
     } else {
       console.log("Banco criado");
     }
@@ -43,28 +42,31 @@ app.get("/selectUsers", (req, res) => {
   });
 });
 
-app.get("/checkuser/:email/:password", (req, res) => {
+app.get("/checkuser/:email", (req, res) => {
   const email = req.params.email;
-  const password = req.params.password;
 
-  let SQL = "SELECT * FROM users WHERE email = ? and password = ?";
+  let SQL = "SELECT * FROM users WHERE email = ? ";
 
   console.log("Aqui comparando users");
-  db.query(SQL, [email, password], (err, result) => {
-    if (err) {
-      console.error(err);
-    } else {
+  db.query(SQL, [email], (err, result) => {
+    if (err) res.send(err);
+    else {
+      if (result.length > 0) console.log("Mais de um usuário ... ");
       res.send(result);
     }
   });
 });
 
-app.get("/verifyuser/e=:e&p=:p", (req, res) => {
-  const e = req.params.p;
-  const p = req.params.e;
+app.get("/checkuserpassword/:email/:password", (req, res) => {
+  let email = req.params.email;
+  let password = req.params.password;
 
-  res.send(`Aqui estamos : valores : ${e} - ${p}`);
-  // res.send(`Aqui estamos : valores : ${req.params.e}`);
+  let SQL = "SELECT * FROM users where email = ? and password = ?";
+
+  db.query(SQL, [email, password], (err, result) => {
+    if (err) res.send(err);
+    else res.send(result);
+  });
 });
 
 app.post("/createnewpage", (req, res) => {
@@ -117,9 +119,31 @@ app.post("/createnewtopic", (req, res) => {
   });
 });
 
+app.put("/editsubtitle", (req, res) => {
+  let SQL = "UPDATE topics SET subtitle = ? WHERE id = ?";
+
+  const { id } = req.body;
+  const { subtitle } = req.body;
+
+  db.query(SQL, [subtitle, id], (err, rows) => {
+    if (err) return res.send(err);
+    if (rows) return res.send(rows);
+  });
+});
+
+app.put("/editcontent", (req, res) => {
+  const { id } = req.body;
+  const { content } = req.body;
+
+  let SQL = "UPDATE topics SET content = ? WHERE id = ?";
+
+  db.query(SQL, [content, id], (err, rows) => {
+    if (err) return res.send(err);
+    if (rows) return res.send(rows);
+  });
+});
 
 app.listen(3001, () => {
   console.log("Servidor Rodando...");
 });
 
-// console.log("Teste concluido");
